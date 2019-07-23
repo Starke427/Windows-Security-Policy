@@ -8,8 +8,11 @@ Account Logon
 Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used. This category includes the following subcategories:
 
 Audit Credential Validation – Success/Failure
+
 Audit Kerberos Authentication Service – Success/Failure
+
 Audit Kerberos Service Ticket Operations – Success/Failure
+
 Audit Other Logon/Logoff Events – Success/Failure
 
 # Account Management
