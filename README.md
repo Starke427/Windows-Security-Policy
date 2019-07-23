@@ -140,7 +140,7 @@ Audit Non-Sensitive Privilege Use – Not Configured
 
 Audit Other Privilege Use Events – Not Configured
 
-Audit Sensitive Privilege Use – Success/Failure
+Audit Sensitive Privilege Use – Success
 
 # System
 System security policy settings and audit events allow you to track system-level changes to a computer that are not included in other categories and that have potential security implications. This category includes the following subcategories:
