@@ -3,9 +3,13 @@ High-level guidance on configuring Windows' Advanced Audit Policy Configuration 
 
 # Executive Summary
 This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.
+
 Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments.
+
 Account Logon
-Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used. This category includes the following subcategories:
+Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used. 
+
+This category includes the following subcategories:
 
 Audit Credential Validation – Success/Failure
 
@@ -16,7 +20,9 @@ Audit Kerberos Service Ticket Operations – Success/Failure
 Audit Other Logon/Logoff Events – Success/Failure
 
 # Account Management
-The security audit policy settings in this category can be used to monitor changes to user and computer accounts and groups. This category includes the following subcategories:
+The security audit policy settings in this category can be used to monitor changes to user and computer accounts and groups. 
+
+This category includes the following subcategories:
 
 Audit Application Group Management - Success
 
@@ -31,7 +37,9 @@ Audit Security Group Management - Success
 Audit User Account Management – Success/Failure
 
 # Detailed Tracking
-Detailed Tracking security policy settings and audit events can be used to monitor the activities of individual applications and users on that computer, and to understand how a computer is being used. This category includes the following subcategories:
+Detailed Tracking security policy settings and audit events can be used to monitor the activities of individual applications and users on that computer, and to understand how a computer is being used. 
+
+This category includes the following subcategories:
 
 Audit DPAPI Activity – Not Configured
 
@@ -48,7 +56,9 @@ Audit Credential Validation – Failure
 Audit Token Right Adjusted – Not Configured
 
 # DS Access
-DS Access security audit policy settings provide a detailed audit trail of attempts to access and modify objects in Active Directory Domain Services (AD DS). These audit events are logged only on domain controllers. This category includes the following subcategories:
+DS Access security audit policy settings provide a detailed audit trail of attempts to access and modify objects in Active Directory Domain Services (AD DS). These audit events are logged only on domain controllers. 
+
+This category includes the following subcategories:
 
 Audit Detailed Directory Service Replication – Not Configured
 
@@ -59,7 +69,9 @@ Audit Directory Service Changes - Success
 Audit Directory Service Replication – Not Configured
 
 # Logon/Logoff
-Logon/Logoff security policy settings and audit events allow you to track attempts to log on to a computer interactively or over a network. These events are particularly useful for tracking user activity and identifying potential attacks on network resources. This category includes the following subcategories:
+Logon/Logoff security policy settings and audit events allow you to track attempts to log on to a computer interactively or over a network. These events are particularly useful for tracking user activity and identifying potential attacks on network resources. 
+
+This category includes the following subcategories:
 
 Audit Account Lockout - Failure
 
@@ -119,7 +131,9 @@ Audit SAM – Not Configured
 Audit Central Access Policy Staging – Not Configured
 
 # Policy Change
-Policy Change audit events allow you to track changes to important security policies on a local system or network. Because policies are typically established by administrators to help secure network resources, monitoring changes or attempts to change these policies can be an important aspect of security management for a network. This category includes the following subcategories:
+Policy Change audit events allow you to track changes to important security policies on a local system or network. Because policies are typically established by administrators to help secure network resources, monitoring changes or attempts to change these policies can be an important aspect of security management for a network. 
+
+This category includes the following subcategories:
 
 Audit Audit Policy Change - Success
 
@@ -134,7 +148,9 @@ Audit MPSSVC Rule-Level Policy Change – Success/Failure
 Audit Other Policy Change Events – Failure
 
 # Privilege Use
-Permissions on a network are granted for users or computers to complete defined tasks. Privilege Use security policy settings and audit events allow you to track the use of certain permissions on one or more systems. This category includes the following subcategories:
+Permissions on a network are granted for users or computers to complete defined tasks. Privilege Use security policy settings and audit events allow you to track the use of certain permissions on one or more systems. 
+
+This category includes the following subcategories:
 
 Audit Non-Sensitive Privilege Use – Not Configured
 
@@ -143,7 +159,9 @@ Audit Other Privilege Use Events – Not Configured
 Audit Sensitive Privilege Use – Success
 
 # System
-System security policy settings and audit events allow you to track system-level changes to a computer that are not included in other categories and that have potential security implications. This category includes the following subcategories:
+System security policy settings and audit events allow you to track system-level changes to a computer that are not included in other categories and that have potential security implications. 
+
+This category includes the following subcategories:
 
 Audit IPsec Driver – Not Configured
 
