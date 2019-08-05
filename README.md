@@ -189,3 +189,17 @@ Registry (Global Object Access Auditing) – Not Configured
 # configure_audit_policy.ps1
 
 To simplify audit policy configuration for stand-alone systems, this script will automatically configure all policies as mentioned above. The script can be modified for your specific needs and must be run from an Administrative PowerShell.
+
+# configure_password_policy.ps1
+
+To simplify password policy configuration for stand-alone systems, this script will automatically configure the following:  
+
+Force Log Off:  900 Minutes  
+Minimum Password Age:   0 days  
+Maximum Password Age:   30 days  
+Minimum Password Length:  14 characters  
+Number of Passwords Remembered: 24  
+Account Lockout Threshold:   10  
+Account Lockout Duration:   15 minutes  
+
+The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature.
