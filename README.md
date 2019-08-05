@@ -6,7 +6,7 @@ This document is intended to provide high-level guidance on configuring the Wind
 
 Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments.
 
-Account Logon
+# Account Logon
 Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used. 
 
 This category includes the following subcategories:
