@@ -185,3 +185,7 @@ This category includes the following subcategories:
 File System (Global Object Access Auditing) – Not Configured
 
 Registry (Global Object Access Auditing) – Not Configured
+
+# configure_audit_policy.ps1
+
+To simplify audit policy configuration for stand-alone systems, this script will automatically configure all policies as mentioned above. The script can be modified for your specific needs and must be run from an Administrative PowerShell.
