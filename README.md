@@ -1,13 +1,15 @@
 # Windows-Audit-Policy
-High-level guidance on configuring Windows' Advanced Audit Policy Configuration based on recommendations from Microsoft. Intended for all Windows environments, especially those centrally logging to a SIEM.
+High-level guidance and configuration scripts based on Microsoft-recommended security configuration baselines for Windows. Intended for all Windows environments, especially stand-alone (non-domain managed) systems that are typically overlooked.
 
 ## Executive Summary
-This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.
+This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.  
 
-Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments.
+Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments.  
+
+To aide in your assessment, you can take advantage of Microsoft's Security Compliance Toolkit (SCT). SCT is a set of tools that allows enterprise security administrators to download, analyze, test, edit, and store Microsoft-recommended security configuration baselines for Windows. Using the toolkit, administrators can compare their current GPOs with Microsoft-recommended GPO baselines or other baselines, edit them, store them in GPO backup file format, and apply them broadly through Active Directory or individually through local policy. The toolkit is available here:  https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10  
 
 ### Account Logon
-Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used. 
+Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used.
 
 This category includes the following subcategories:
 
@@ -156,7 +158,7 @@ Audit Non-Sensitive Privilege Use – Not Configured
 
 Audit Other Privilege Use Events – Not Configured
 
-Audit Sensitive Privilege Use – Success
+Audit Sensitive Privilege Use – Success  # Failure auditing is recommended per MSFT, but is very noisey and not included by default
 
 ### System
 System security policy settings and audit events allow you to track system-level changes to a computer that are not included in other categories and that have potential security implications. 
