@@ -1,6 +1,10 @@
 # Windows-Security-Policy
 Specific guidance and configuration scripts based on Microsoft-recommended security configuration baselines for Windows. Intended for all Windows environments, especially stand-alone (non-domain managed) systems that are typically overlooked.
 
+# enable_secure_policy.ps1
+
+This will automatically configure your local audit and password policies per MSFT security baselines. It must be run from an administrator PowerShell console.
+
 ## Executive Summary
 This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.  
 
