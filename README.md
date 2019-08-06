@@ -1,5 +1,5 @@
-# Windows-Audit-Policy
-High-level guidance and configuration scripts based on Microsoft-recommended security configuration baselines for Windows. Intended for all Windows environments, especially stand-alone (non-domain managed) systems that are typically overlooked.
+# Windows-Security-Policy
+Specific guidance and configuration scripts based on Microsoft-recommended security configuration baselines for Windows. Intended for all Windows environments, especially stand-alone (non-domain managed) systems that are typically overlooked.
 
 ## Executive Summary
 This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.  
