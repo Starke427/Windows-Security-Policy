@@ -4,7 +4,7 @@
 #
 
 # System
-auditpol /set /subcategory:"Security System Extension" /success:disable /failure:disable > $null
+auditpol /set /subcategory:"Security System Extension" /success:enable /failure:disable > $null
 auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable > $null
 auditpol /set /subcategory:"IPsec Driver" /success:disable /failure:disable > $null
 auditpol /set /subcategory:"Other System Events" /success:enable /failure:enable > $null
