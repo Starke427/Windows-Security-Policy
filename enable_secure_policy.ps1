@@ -1,4 +1,4 @@
-# Download from url and write to local file in C:\temp, similar to curl.
+# Download from url and write to local file in $env:temp, which translates as the user's C:\Users\XXX\AppData\Local\Temp.
 # When executed, will download and run the audit and password policy scripts.
 # Automatically keeps up to date with latest versioning. Commenting out powershell.exe will allow you to edit scripts prior to execution.
 #
