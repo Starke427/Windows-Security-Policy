@@ -8,6 +8,58 @@ Due to the limitations of system access control lists (SACLs) it is recommended 
 
 To aide in your assessment, you can take advantage of Microsoft's Security Compliance Toolkit (SCT). SCT is a set of tools that allows enterprise security administrators to download, analyze, test, edit, and store Microsoft-recommended security configuration baselines for Windows. Using the toolkit, administrators can compare their current GPOs with Microsoft-recommended GPO baselines or other baselines, edit them, store them in GPO backup file format, and apply them broadly through Active Directory or individually through local policy. The toolkit is available here:  https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10  
 
+---
+# Enable Advanced Auditing and Password Policy
+
+This will automatically configure your local audit and password policies per MSFT security baselines. Please see the sections below if you would prefer to only configure one or the other. This will be implemented immediately on the local system.
+
+The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
+
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/enable_secure_policy.ps1"
+$file1 = "$env:temp\enable_secure_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\enable_secure_policy.ps1"
+```
+
+# Configure Password Policy
+
+To simplify password policy configuration for stand-alone systems, this script will automatically configure the following:  
+
+Force Log Off:  900 Minutes  
+Minimum Password Age:   0 days  
+Maximum Password Age:   30 days  
+Minimum Password Length:  14 characters  
+Number of Passwords Remembered: 24  
+Account Lockout Threshold:   10  
+Account Lockout Duration:   15 minutes  
+
+The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
+
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_password_policy.ps1"
+$file1 = "$env:temp\configure_password_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\configure_password_policy.ps1"
+```
+
+# Configure Advanced Auditing
+
+To simplify audit policy configuration for stand-alone systems, the following will automatically configure all policies as outlined below. The following must be run from an Administrative PowerShell.
+
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_audit_policy.ps1"
+$file1 = "$env:temp\configure_audit_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\configure_audit_policy.ps1"
+```
+
+---
+
+
 ### Account Logon
 Configuring policy settings in this category can help you document attempts to authenticate account data on a domain controller or on a local Security Accounts Manager (SAM). Unlike Logon and Logoff policy settings and events, which track attempts to access a particular computer, settings and events in this category focus on the account database that is used.
 
@@ -188,50 +240,3 @@ File System (Global Object Access Auditing) – Not Configured
 
 Registry (Global Object Access Auditing) – Not Configured
 
-# Enable Advanced Auditing and Password Policy
-
-This will automatically configure your local audit and password policies per MSFT security baselines. Please see the sections below if you would prefer to only configure one or the other. This will be implemented immediately on the local system.
-
-The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
-
-```
-$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/enable_secure_policy.ps1"
-$file1 = "$env:temp\enable_secure_policy.ps1"
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
-Set-ExecutionPolicy -ExecutionPolicy Bypass -force
-& "$env:temp\enable_secure_policy.ps1"
-```
-
-# Configure Advanced Auditing
-
-To simplify audit policy configuration for stand-alone systems, the following will automatically configure all policies as mentioned above. The following must be run from an Administrative PowerShell.
-
-```
-$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_audit_policy.ps1"
-$file1 = "$env:temp\configure_audit_policy.ps1"
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
-Set-ExecutionPolicy -ExecutionPolicy Bypass -force
-& "$env:temp\configure_audit_policy.ps1"
-```
-
-# Configure Password Policy
-
-To simplify password policy configuration for stand-alone systems, this script will automatically configure the following:  
-
-Force Log Off:  900 Minutes  
-Minimum Password Age:   0 days  
-Maximum Password Age:   30 days  
-Minimum Password Length:  14 characters  
-Number of Passwords Remembered: 24  
-Account Lockout Threshold:   10  
-Account Lockout Duration:   15 minutes  
-
-The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
-
-```
-$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_password_policy.ps1"
-$file1 = "$env:temp\configure_password_policy.ps1"
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
-Set-ExecutionPolicy -ExecutionPolicy Bypass -force
-& "$env:temp\configure_password_policy.ps1"
-```
