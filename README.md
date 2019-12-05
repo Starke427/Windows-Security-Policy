@@ -1,10 +1,10 @@
 # Windows-Security-Policy
 Specific guidance and configuration scripts based on Microsoft-recommended security configuration baselines for Windows. Intended for all Windows environments, especially stand-alone (non-domain managed) systems that are typically overlooked.
 
-## Executive Summary
-This document is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.  
+---
+This is intended to provide high-level guidance on configuring the Window’s Advanced Audit Policy Configuration based on recommendations from Microsoft to meet CIS standards. Full details on each category can be found at https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/advanced-security-audit-policy-settings.  
 
-Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments.  
+Due to the limitations of system access control lists (SACLs) it is recommended that you implement some form of agent-based monitoring of file systems and registries instead of relying on Global Object Access Auditing. This will also, generally, provide you with some form of more centralized audit logging which will help simplify the validation of logging during audit assessments. A great, free alternative would be to take advantage of Sysmon, which you can automate the deployment of [here](https://github.com/Starke427/Sysmon-Configs).
 
 To aide in your assessment, you can take advantage of Microsoft's Security Compliance Toolkit (SCT). SCT is a set of tools that allows enterprise security administrators to download, analyze, test, edit, and store Microsoft-recommended security configuration baselines for Windows. Using the toolkit, administrators can compare their current GPOs with Microsoft-recommended GPO baselines or other baselines, edit them, store them in GPO backup file format, and apply them broadly through Active Directory or individually through local policy. The toolkit is available here:  https://docs.microsoft.com/en-us/windows/security/threat-protection/security-compliance-toolkit-10  
 
@@ -188,15 +188,33 @@ File System (Global Object Access Auditing) – Not Configured
 
 Registry (Global Object Access Auditing) – Not Configured
 
-# enable_secure_policy.ps1
+# Enable Advanced Auditing and Password Policy
 
-This will automatically configure your local audit and password policies per MSFT security baselines. Just click on enable_secure_policy.ps1 above and copy it into an administrator PowerShell console. To open an administrator PowerShell console just right-click on the Windows Start button and select 'Windows PowerShell (Admin)'.
+This will automatically configure your local audit and password policies per MSFT security baselines. Please see the sections below if you would prefer to only configure one or the other. This will be implemented immediately on the local system.
 
-# configure_audit_policy.ps1
+The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
 
-To simplify audit policy configuration for stand-alone systems, this script will automatically configure all policies as mentioned above. The script can be modified for your specific needs and must be run from an Administrative PowerShell.
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/enable_secure_policy.ps1"
+$file1 = "$env:temp\enable_secure_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\enable_secure_policy.ps1"
+```
 
-# configure_password_policy.ps1
+# Configure Advanced Auditing
+
+To simplify audit policy configuration for stand-alone systems, the following will automatically configure all policies as mentioned above. The following must be run from an Administrative PowerShell.
+
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_audit_policy.ps1"
+$file1 = "$env:temp\configure_audit_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\configure_audit_policy.ps1"
+```
+
+# Configure Password Policy
 
 To simplify password policy configuration for stand-alone systems, this script will automatically configure the following:  
 
@@ -208,4 +226,12 @@ Number of Passwords Remembered: 24
 Account Lockout Threshold:   10  
 Account Lockout Duration:   15 minutes  
 
-The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature.
+The script finishes by opening the local security policy and prompting you to enable password complexity, as there is currently no way to script-out enabling this feature. Under Security Settings > Account Policies > Password Policy, click on and enable 'Password must meet complexity requirements.'
+
+```
+$url1 = "https://raw.githubusercontent.com/Starke427/Windows-Security-Policy/master/configure_password_policy.ps1"
+$file1 = "$env:temp\configure_password_policy.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url1, $file1)
+Set-ExecutionPolicy -ExecutionPolicy Bypass -force
+& "$env:temp\configure_password_policy.ps1"
+```
